@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-03-15T19:41:21.043Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="OZQ8YyiH_cugEHmydqvE" version="17.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-15T19:45:40.107Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="nCfoptIOg_lhZmsbkGGo" version="17.1.2" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="1117" dy="1438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="827" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -278,7 +278,7 @@
         <mxCell id="8hP7hutCpW1YsfkcWPiX-37" value="Opis" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="187" y="610" width="90" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8hP7hutCpW1YsfkcWPiX-38" value="Koszt" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8hP7hutCpW1YsfkcWPiX-38" value="Koszt" style="ellipse;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
           <mxGeometry x="310" y="570" width="90" height="60" as="geometry" />
         </mxCell>
         <mxCell id="8hP7hutCpW1YsfkcWPiX-39" value="Nadzienie" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
