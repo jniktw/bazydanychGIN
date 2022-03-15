@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-03-15T16:33:59.606Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="cjv1Cl3XoFykhdB7125l" version="17.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-15T16:41:20.559Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="PaJLFfxJlIF7kcSuvy-9" version="17.1.2" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="2234" dy="2050" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="827" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="1117" dy="1438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="827" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -101,7 +101,7 @@
         <mxCell id="abUERGnJFec2dvyfxDvH-33" value="DataRealizacji" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="860" y="-170" width="90" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="abUERGnJFec2dvyfxDvH-34" value="IDZamowienia" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="abUERGnJFec2dvyfxDvH-34" value="&lt;u&gt;IDZamowienia&lt;/u&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="930" y="-390" width="90" height="60" as="geometry" />
         </mxCell>
         <mxCell id="abUERGnJFec2dvyfxDvH-35" value="IDKlienta" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -191,7 +191,7 @@
         <mxCell id="8hP7hutCpW1YsfkcWPiX-14" value="Cena" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1360" y="580" width="90" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="8hP7hutCpW1YsfkcWPiX-15" value="IDPudelka" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="8hP7hutCpW1YsfkcWPiX-15" value="&lt;u&gt;IDPudelka&lt;/u&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1480" y="354" width="90" height="56" as="geometry" />
         </mxCell>
         <mxCell id="8hP7hutCpW1YsfkcWPiX-16" value="Opis" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
