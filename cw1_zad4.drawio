@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-03-15T21:04:51.729Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="3h9wUk4eh5m50rm45bJA" version="17.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-16T08:37:46.801Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="yd485ZUTh3k-F0io_VFa" version="17.1.3" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
     <mxGraphModel dx="782" dy="1255" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="827" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -355,9 +355,6 @@
         </mxCell>
         <mxCell id="8hP7hutCpW1YsfkcWPiX-58" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1310" y="-290" width="140" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="8hP7hutCpW1YsfkcWPiX-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="8hP7hutCpW1YsfkcWPiX-10" target="8hP7hutCpW1YsfkcWPiX-17" edge="1">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="8hP7hutCpW1YsfkcWPiX-10" value="Pudelka" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1320" y="460" width="120" height="60" as="geometry" />
