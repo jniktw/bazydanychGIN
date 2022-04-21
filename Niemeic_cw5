@@ -1,0 +1,233 @@
+-- 2
+Create Schema ksiegowosc;
+-- 4
+Create table ksiegowosc.pracownicy(
+ID_pracownika Smallint Primary Key UNIQUE,
+Imię Varchar(15),
+Nazwisko Varchar(25),
+Adres Varchar(50),
+Telefon Integer check ()
+)
+
+Comment on table ksiegowosc.pracownicy 
+is 'Zakładając że numery id (w każdej z tabel) mają zawierać 1-2 cyfry, 
+można użyć do nich typu smallint zamiast integer. Telefon 
+musi przechować liczbę o długości 9 cyfr więc typ integer 
+jest tu konieczny. Maksymalna ilośc znaków w zmiennych typu
+varchar zależna on rodzaju (najkrótsza dla imienia, najdłuższa 
+dla adresu)'
+
+Create table ksiegowosc.godziny(
+ID_godziny Smallint Primary Key UNIQUE,
+"Data" Date,
+liczba_godzin Smallint,
+ID_pracownika Smallint NOT NULL 
+	REFERENCES ksiegowosc.pracownicy (ID_pracownika) 
+)
+
+Comment on table ksiegowosc.godziny 
+is 'Tabela przedstawia liczbę godzin, jaką dany pracownik (ID_pracownika)
+spędził w pracy w danym dniu (Data)' 
+
+Create table ksiegowosc.pensje(
+ID_pensji Smallint Primary Key UNIQUE,
+stanowisko varchar(15),
+kwota decimal(6,2)
+)
+
+Comment on table ksiegowosc.pensje 
+is 'kwota pensji może być różna dla tego samego stanowiska, 
+dlatego atrybut stanowisko nie jest unikalny'
+
+Create table ksiegowosc.premie(
+ID_premii Smallint Primary Key UNIQUE,
+rodzaj varchar(30),
+kwota smallint
+)
+
+Comment on table ksiegowosc.pensje 
+is 'kwota premii nie przekracza 500 zł, więc może być atrybutem typu smallint'
+
+Create table ksiegowosc.wynagrodzenia(
+ID_wynagrodzenia Smallint Primary Key UNIQUE,
+"Data" Date,
+ID_pracownika Smallint NOT NULL 
+	REFERENCES ksiegowosc.pracownicy (ID_pracownika),
+ID_godziny Smallint NOT NULL UNIQUE
+	REFERENCES ksiegowosc.godziny (ID_godziny),
+ID_pensji Smallint NOT NULL 
+	REFERENCES ksiegowosc.pensje (ID_pensji),
+ID_premii Smallint 
+	REFERENCES ksiegowosc.premie (ID_premii)
+)
+
+Comment on table ksiegowosc.pensje 
+is 'Atrybut "ID_godziny" musi być unikalny ponieważ takowy w tabeli 
+godziny już przypisuje się do danego pracownika, za to "ID_pensji" 
+nie może, gdyż dwóch pracowników na tym samym stanowisku może zarabiać 
+tyle samo'
+-- 5
+Insert into ksiegowosc.pracownicy 
+Values
+(1,'Andrzej','Kosiba','Kraków, Karmelicka 21/4', 873332804),
+(2,'Sabina','Juszczyszyn','Balice, Radziwiłłów 92', 906439244),
+(3,'Magdalena','Pancerna','Wieliczka, Słowackiego 20', 282560579),
+(4,'Tomasz','Adamiak','Więckowice, Modrzewiowa 12', 959529123),
+(5,'Jan','Mazurski','Kraków, Gazowa 21', 613805969),
+(6,'Justyna','Krukowska','Kraków, Karmelicka 21/4', 524408330),
+(7,'Kamil','Nogat','Kraków, Ułanów 66', 717627726),
+(8,'Barbara','Sowińska','Węgrzce, A5 8', 543173830),
+(9,'Grzegorz','Malczewski','Kraków, Dolna 2', 669907668),
+(10,'Mateusz','Kamiński','Kraków, Konfederacka 5', 775258328)
+
+Insert into ksiegowosc.godziny 
+Values
+(1,'2022-01-11', 7, 3),
+(2,'2022-01-11', 8, 6),
+(3,'2022-01-11', 9, 8),
+(4,'2022-01-11', 6, 10),
+(5,'2022-01-11', 8, 2),
+(6,'2022-01-11', 4, 4),
+(7,'2022-01-12', 5, 4),
+(8,'2022-01-12', 7, 10),
+(9,'2022-01-12', 9, 1),
+(10,'2022-01-12', 9, 5),
+(11,'2022-01-12', 6, 7),
+(12,'2022-01-12', 8, 3),
+(13,'2022-01-13', 7, 10),
+(14,'2022-01-13', 5, 7),
+(15,'2022-01-13', 8, 9),
+(16,'2022-01-13', 10, 5)
+
+Insert into ksiegowosc.pensje 
+Values
+(1,'Kierownik',4300.00),
+(2,'Kierownik',3900.00),
+(3,'Księgowy',3500.00),
+(4,'Księgowy',3200.00),
+(5,'Księgowy',2950.00),
+(6,'Księgowy',2800.00),
+(7,'Dozorca',2100.00),
+(8,'Dozorca',1900.00),
+(9,'Informatyk',3150.00),
+(10,'Informatyk',3000.00),
+(11,'Informatyk',2700.00),
+(12,'Sekretarz',2800.00),
+(13,'Sekretarz',2500.00)
+
+Insert into ksiegowosc.premie 
+Values
+(1,'Nadgodziny',300),
+(2,'Pomoc innemu pracowniku',100),
+(3,'Niewykorzystany urlop',350),
+(4,'Nocna zmiana',500),
+(5,'Reprezentowanie firmy',450),
+(6,'Nadprogramowa jakość pracy',250),
+(7,'Zastąpienie współpracownika',300),
+(8,'Organizacja inicjatyw w firmie',400),
+(9,'Odszkodowanie za straty',250),
+(10,'Udzielenie pierwszej pomocy',300)
+
+
+Insert into ksiegowosc.wynagrodzenia 
+Values
+(1,'2022-01-15',1,9,9),
+(2,'2022-01-15',2,5,12,4),
+(3,'2022-01-15',5,10,9,1),
+(4,'2022-01-15',7,11,1,NULL),
+(5,'2022-01-15',3,12,5,5),
+(6,'2022-01-15',6,2,3,6),
+(7,'2022-01-15',8,3,8,NULL)
+(8,'2022-01-15',4,6,4,7),
+(9,'2022-01-15',9,15,7,2),
+(10,'2022-01-15',10,8,10,6)
+
+-- 6
+-- a
+Select * from ksiegowosc.wynagrodzenia
+-- b
+Select ID_pracownika from ksiegowosc.wynagrodzenia 
+where ID_pensji in (
+	Select ID_pensji from ksiegowosc.pensje
+		Where kwota > 1000.00)
+-- c
+Select ID_pracownika from ksiegowosc.wynagrodzenia 
+where ID_premii is NULL and ID_pensji in (
+	Select ID_pensji from ksiegowosc.pensje
+		Where kwota > 2000.00)
+-- d
+Select * from ksiegowosc.pracownicy 
+where imię like 'J%'
+-- e
+Select * from ksiegowosc.pracownicy 
+where imię like '%a' and nazwisko like '%n%'
+-- f
+Select imię, nazwisko from ksiegowosc.pracownicy where id_pracownika in (Select id_pracownika from (Select ID_pracownika, sum(liczba_godzin)-10 as nadgodziny from ksiegowosc.godziny 
+group by ID_pracownika) as nt
+where nt.nadgodziny > 0)
+-- g
+Select imię, nazwisko from ksiegowosc.pracownicy 
+where ID_pracownika in (Select ID_pracownika from ksiegowosc.wynagrodzenia 
+						where ID_pensji in( 
+	Select ID_pensji from ksiegowosc.pensje
+		Where kwota > 1500.00 AND kwota < 3000.00))
+		
+-- h
+
+Select imię, nazwisko from ksiegowosc.pracownicy where id_pracownika in 
+(Select id_pracownika from (Select ID_pracownika, sum(liczba_godzin)-160 as nadgodziny from ksiegowosc.godziny 
+group by ID_pracownika) as nt
+where nt.nadgodziny > 0) and 
+ID_pracownika in (select id_pracownika from ksiegowosc.wynagrodzenia where ID_premii is null)
+
+-- i
+
+Select imię,nazwisko from ksiegowosc.pracownicy 
+inner join (Select ID_pracownika from (ksiegowosc.wynagrodzenia 
+									   inner join ksiegowosc.pensje 
+									   on ksiegowosc.wynagrodzenia.ID_pensji = ksiegowosc.pensje.ID_pensji) 
+			as abc order by kwota ASC) as abcd on ksiegowosc.pracownicy.ID_pracownika = abcd.ID_pracownika
+
+-- j
+
+Select imię,nazwisko from ksiegowosc.pracownicy 
+inner join (Select ID_pracownika from (ksiegowosc.wynagrodzenia 
+									   inner join ksiegowosc.premie 
+									   on ksiegowosc.wynagrodzenia.ID_premii = ksiegowosc.premie.ID_premii) 
+			as abc order by kwota DESC)as abcd on ksiegowosc.pracownicy.ID_pracownika = abcd.ID_pracownika
+			
+-- k
+
+Select stanowisko, count(*) from (ksiegowosc.wynagrodzenia 
+									   inner join ksiegowosc.pensje 
+									   on ksiegowosc.wynagrodzenia.ID_pensji = ksiegowosc.pensje.ID_pensji) as abc group by stanowisko
+									   
+-- l
+
+Select max(kwota), min(kwota), avg(kwota) from ksiegowosc.pensje where stanowisko like 'Kierownik'
+
+-- m
+
+Select sum(kwota) from ksiegowosc.wynagrodzenia 
+									   inner join ksiegowosc.pensje 
+									   on ksiegowosc.wynagrodzenia.ID_pensji = ksiegowosc.pensje.ID_pensji
+
+-- n
+
+Select stanowisko, sum(kwota) from ksiegowosc.wynagrodzenia 
+									   inner join ksiegowosc.pensje 
+									   on ksiegowosc.wynagrodzenia.ID_pensji = ksiegowosc.pensje.ID_pensji group by stanowisko
+
+-- o
+
+Select stanowisko, count(ID_premii) from ksiegowosc.wynagrodzenia 
+									   inner join ksiegowosc.pensje 
+									   on ksiegowosc.wynagrodzenia.ID_pensji = ksiegowosc.pensje.ID_pensji group by stanowisko								   
+
+-- p
+
+Delete from ksiegowosc.pracownicy where ID_pracownika in 
+(Select ID_pracownika from ksiegowosc.wynagrodzenia where ID_pensji in 
+ (Select ID_pensji from ksiegowosc.pensje where kwota < 1200))
+									   
+									   
