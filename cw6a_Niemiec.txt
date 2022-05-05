@@ -1,9 +1,12 @@
 Zad 1.
 
 id_produktu -> nazwa_produktu, cena_produktu, VAT
+id_klienta -> nazwa_klienta 
 cena_produktu, ilosc -> suma_netto
 suma_netto, VAT -> suma_brutto
 nazwa_produktu -> VAT
+nazwa_produktu -> cena_produktu
+data_zamowienia, id_produktu, id_klienta -> nazwa_produktu, nazwa_klienta, cena_produktu, ilość, VAT, suma_brutto, suma_netto
 
 Zad 2.
 
