@@ -1,0 +1,51 @@
+Select * from ksiegowosc.premie
+
+--a
+
+Alter Table ksiegowosc.pracownicy alter column telefon type varchar(16)
+Update ksiegowosc.pracownicy set telefon = CONCAT( '(+48)', telefon)
+
+--b
+
+Update ksiegowosc.pracownicy set telefon = overlay(telefon placing '-' from 9 for 0)
+Update ksiegowosc.pracownicy set telefon = overlay(telefon placing '-' from 13 for 0)
+
+--c
+
+Select id_pracownika, UPPER(imię), Upper(nazwisko),UPPER(adres), telefon 
+from ksiegowosc.pracownicy order by LENGTH(nazwisko) desc limit 1
+
+--d
+
+SELECT md5(imię) as imię, 
+md5(nazwisko) as nazwisko, 
+md5(adres) as adres, 
+md5(telefon) as telefon, 
+md5(Cast(kwota AS varchar(15))) as pensja
+from (ksiegowosc.pracownicy 
+inner join ksiegowosc.wynagrodzenia on pracownicy.id_pracownika = wynagrodzenia.id_pracownika) 
+as abc inner join ksiegowosc.pensje on abc.id_pensji = pensje.id_pensji
+
+--f
+
+Select imię, nazwisko, adres, telefon, stanowisko, pensje.kwota, Coalesce (premie.kwota,0) as  from 
+	ksiegowosc.pracownicy 
+	 left join ksiegowosc.wynagrodzenia on pracownicy.id_pracownika = wynagrodzenia.id_pracownika
+	left join ksiegowosc.pensje on wynagrodzenia.id_pensji = pensje.id_pensji
+	left join ksiegowosc.premie on wynagrodzenia.id_premii = premie.id_premii
+
+---g Przyjąłem że dla 3 dni ilość nadgodzin wynosi 16 godzin (wedle treści w ćw 5 dla miesiąca wynosiła 160 godzin)
+
+Select CONCAT('Pracownik ', imię,' ', nazwisko, ' w dniu ', "Data", 
+			  ' otrzymał pensję całkowitą na kwotę ', (pensje.kwota+Coalesce(premie.kwota,0)+Coalesce(premia,0)),
+			  ' zł, gdzie wynagrodzenie zasadnicze wynosiło: ',Coalesce (pensje.kwota,0), ' zł, premia: '
+			 ,Coalesce(premie.kwota,0), ' zł, nadgodziny: ', Coalesce(premia,0), ' zł') from ((
+	(ksiegowosc.pracownicy 
+	inner join ksiegowosc.wynagrodzenia on pracownicy.id_pracownika = wynagrodzenia.id_pracownika)
+	inner join ksiegowosc.pensje on wynagrodzenia.id_pensji = pensje.id_pensji) 
+	left join ksiegowosc.premie on wynagrodzenia.id_premii = premie.id_premii)
+	left join (Select * from (select id_pracownika, sum(liczba_godzin)*100-1600 as premia
+from ksiegowosc.godziny group by id_pracownika) as abc where abc.premia > 0) as abcd
+on wynagrodzenia.id_pracownika = abcd.id_pracownika 
+
+
